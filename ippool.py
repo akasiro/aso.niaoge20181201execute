@@ -44,7 +44,7 @@ def get_random_ip(ip_list = get_qiyeip_list(),testNet = 'http://aso.niaogebiji.c
         
 
         try:
-            res = requests.get(testNet,headers = getrandomheader(),proxies = proxies)
+            res = requests.get(testNet,headers = DefaultHeader,proxies = proxies)
         
             if res.status_code == 200:
                 res.close()
@@ -54,7 +54,7 @@ def get_random_ip(ip_list = get_qiyeip_list(),testNet = 'http://aso.niaogebiji.c
                 res.close()
         except:
             ip_list.remove(randomip)
-            time.sleep(1)
+            time.sleep(0.1)
     #print(proxies)
     return proxies
         
