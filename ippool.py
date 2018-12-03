@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import requests
 import random
 import json
-
+import time
 from getrandomheader import getrandomheader
 
 DefaultHeader = {
@@ -35,8 +35,7 @@ def get_random_ip(ip_list = get_qiyeip_list(),testNet = 'http://aso.niaogebiji.c
     global DefaultHeader
     while True:
         if len(ip_list) ==0:
-            proxies = {}
-            break
+            ip_list = get_qiyeip_list()
         randomip = ip_list[random.randint(0,len(ip_list)-1)]
         pro = 'http://{}'.format(randomip)
         proxies = {'http': pro,
@@ -55,6 +54,7 @@ def get_random_ip(ip_list = get_qiyeip_list(),testNet = 'http://aso.niaogebiji.c
                 res.close()
         except:
             ip_list.remove(randomip)
+            time.sleep(1)
     #print(proxies)
     return proxies
         
