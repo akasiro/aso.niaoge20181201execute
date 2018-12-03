@@ -33,9 +33,11 @@ def get_qiyeip_list():
     return ip_list
 def get_random_ip(ip_list = get_qiyeip_list(),testNet = 'http://aso.niaogebiji.com'):
     global DefaultHeader
+    headers = DefaultHeader
     while True:
         if len(ip_list) ==0:
             ip_list = get_qiyeip_list()
+            headers = getrandomheader()
         randomip = ip_list[random.randint(0,len(ip_list)-1)]
         pro = 'http://{}'.format(randomip)
         proxies = {'http': pro,
@@ -44,7 +46,7 @@ def get_random_ip(ip_list = get_qiyeip_list(),testNet = 'http://aso.niaogebiji.c
         
 
         try:
-            res = requests.get(testNet,headers = DefaultHeader,proxies = proxies)
+            res = requests.get(testNet,headers = headers,proxies = proxies)
         
             if res.status_code == 200:
                 res.close()
