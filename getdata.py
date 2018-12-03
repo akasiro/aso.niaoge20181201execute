@@ -146,11 +146,13 @@ def saveascsv(datalist, filepath):
     with open(filepath,'a+',newline= '',encoding= 'utf-8') as csvfile:
         w = csv.writer(csvfile)
         w.writerow(datalist)
+    time.sleep(0.25)
 
 def saveastxt(content,filepath):
     if content != '':
         with open(filepath,'a+',encoding='utf-8') as txtfile:
             txtfile.write(content)
+        time.sleep(0.25)
 
 #4.爬虫主程序
 def main():
@@ -181,7 +183,7 @@ def main():
             with open('tool/usedid.txt','a+') as f:
                 f.write('\n{}\n'.format(appleid))
             print('success : {}'.format(appleid))
-            time.sleep(5)
+            time.sleep(2)
         except:
             print('error : {}'.format(appleid))
             with open('tool/errorid.txt','a+') as f2:
