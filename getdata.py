@@ -14,17 +14,17 @@ def scrapeweb(appleid,headers,proxies = None):
     purl = 'http://aso.niaogebiji.com/app/samepubapp?id={}'.format(appleid)
     #1.2 获取网页
     if proxies is None:
-        bres = requests.get(bsurl,headers= headers)
+        bres = requests.get(bsurl,headers= headers,timeout = 1)
         time.sleep(2)
-        vres = requests.get(vurl,headers = headers)
+        vres = requests.get(vurl,headers = headers,timeout = 1)
         time.sleep(2)
-        pres = requests.get(purl,headers = headers)
+        pres = requests.get(purl,headers = headers,timeout = 1)
     else:
-        bres = requests.get(bsurl, headers=headers,proxies = proxies)
+        bres = requests.get(bsurl, headers=headers,proxies = proxies, timeout = 2)
         time.sleep(2)
-        vres = requests.get(vurl, headers=headers, proxies = proxies)
+        vres = requests.get(vurl, headers=headers, proxies = proxies, timeout = 2)
         time.sleep(2)
-        pres = requests.get(purl, headers=headers,proxies = proxies)
+        pres = requests.get(purl, headers=headers,proxies = proxies, timeout =2)
     return [bres,vres,pres]
 #2.解析网页
 def parsebres(appleid,res):
