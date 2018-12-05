@@ -189,7 +189,7 @@ def main():
             with open('tool/errorid.txt','a+') as f2:
                 f2.write('\n{}\n'.format(appleid))
             proxies = get_random_ip()
-            time.sleep(5)
+            time.sleep(15)
             continue
 
         #break
